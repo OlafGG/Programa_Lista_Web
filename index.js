@@ -5,7 +5,7 @@ const app = express();
 
 //ROUTES
 const user = require('./routes/users');
-
+const materia = require('./routes/materias');
 //MIDDLEWARE
 const index = require("./middleware/index");
 
@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", index);
 app.use("/users", user);
+app.use("/materia", materia);
+
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log("Server is running...");
