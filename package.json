@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "start": "node index.js",
+    "dev": "nodemon index",
+    "start": "nodemon index",
     "lint": "eslint"
   },
   "repository": {
@@ -20,6 +20,8 @@
   "homepage": "https://github.com/OlafGG/Programa_Lista_Web#readme",
   "description": "",
   "dependencies": {
-    
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
   }
 }
