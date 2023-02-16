@@ -1,9 +1,9 @@
 //DEPENDENCIES
-const { query } = require('../config/database');
 const db = require('../config/database');
 
 const getMateria = async(req, res) => {
-    console.log('getM');
+    let query = await db.query ("SELECT * FROM materias");
+    return res.status(200).json({code: 200, ok: query});
 }
 
 const postMateria = async(req, res) => {
@@ -28,7 +28,7 @@ const postMateria = async(req, res) => {
 }
 
 const deleteMateria = async(req, res) => {
-    console.log("deleteM");
+    
 }
 
 const patchMateria = async(req, res) => {
