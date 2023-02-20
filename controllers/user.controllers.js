@@ -1,9 +1,18 @@
 //DEPENDENCIES
+const Usuario = require('../models/usuarios');
 const db = require('../config/database');
 
 //GET ALL USERS
+const getUsers = async(req, res) => {
+    const query = await Usuario.findAll();
+    return res.status(200).json({code: 200, message: query});
+}
+
 const getUser = async(req, res) => {
-    const query = await db.query("SELECT * FROM usuarios");
+    const { user_id } = req.params;
+
+    const query = await Usuario.findOne({where: {user_id}});
+
     return res.status(200).json({code: 200, message: query});
 }
 
@@ -26,6 +35,7 @@ const postUser = async(req, res) => {
 }
 
 //NO SE COMO HACERLO AÚN
+//dato, añadir tabla de selected, al momento de seleccionar cambiar a un positivo y luego eliminar mediante esa tabla (?)
 const deleteTwoOrMoreUser = async(req, res) =>{
     const { user_id, user_name } = req.body;
     if(user_id, user_name){
@@ -70,5 +80,6 @@ module.exports = {
     deleteUser,
     deleteTwoOrMoreUser,
     patchUser,
-    getUser
+    getUser,
+    getUsers
 }
