@@ -10,6 +10,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
 
+        //creacion de las rutas base para los movimientos
         this.paths = {
             alumnos: '/api/alumnos',
             calificaciones: '/api/calificaciones',
@@ -50,6 +51,7 @@ class Server {
     }
 
     routes(){
+        //rutas que tomara la api
         //this.app.use(this.paths.alumnos, require('../routes/alumnos'));
         //this.app.use(this.paths.calificaciones, require('../routes/users'));
         //this.app.use(this.paths.examenes, require('../routes/users'));

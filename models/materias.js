@@ -2,7 +2,7 @@ const Sequilize = require('sequelize');
 
 const {db} = require('../config/database');
 
-//creacion de la tabl
+//creacion de la tabla
 
 const Materias = db.define('materias',{
     materia_id: {
@@ -19,4 +19,5 @@ const Materias = db.define('materias',{
     materia_caracteristica_6: {type: Sequilize.STRING(30), allowNull: true}
 });
 
+//Exportacion del objeto Materias
 module.exports = Materias;
