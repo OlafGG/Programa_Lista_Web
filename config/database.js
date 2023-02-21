@@ -21,6 +21,8 @@ connection.query(
 // Close the connection
 connection.end();
 
+
+
 const db = new Sequilize(process.env.database, 'root', '', {
     host: 'localhost',
     dialect: 'mysql',

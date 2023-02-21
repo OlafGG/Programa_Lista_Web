@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const {db} = require('../config/database');
 
+
 class Server {
     constructor(){
         this.app = express();
@@ -52,7 +53,7 @@ class Server {
 
     routes(){
         //rutas que tomara la api
-        //this.app.use(this.paths.alumnos, require('../routes/alumnos'));
+        this.app.use(this.paths.alumnos, require('../routes/alumnos'));
         //this.app.use(this.paths.calificaciones, require('../routes/users'));
         //this.app.use(this.paths.examenes, require('../routes/users'));
         this.app.use(this.paths.materias, require('../routes/materias'));

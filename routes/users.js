@@ -7,6 +7,6 @@ user.get('/', getUsers);
 user.get('/:user_id', getUser)
 user.post('/', postUser);
 user.delete('/', deleteUser);
-user.patch('/', patchUser)
+user.patch('/', patchUser);
 
 module.exports = user;  
