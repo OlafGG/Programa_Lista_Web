@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { Model } = require('sequelize');
 const { getCalif, getAllCalif, postCalif, deleteCalif, patchCalif } = require('../controllers/calificaciones.controllers');
 
 const calif = Router();

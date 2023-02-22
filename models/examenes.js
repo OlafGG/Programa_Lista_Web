@@ -9,6 +9,7 @@ const Examenes = db.define('examenes', {
         primaryKey: true,
         autoIncrement: false
     },
+    id_examen_user: {type: Sequilize.INTEGER(6), allowNull: false},
     //examen_id_usuario: {type: Sequilize.INTEGER(6), allowNull: false},
     descripcion_examen: {type: Sequilize.STRING(2000), allowNull: false},
     evidencia_examen: {type: Sequilize.STRING(64), allowNull: true},

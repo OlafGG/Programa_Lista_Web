@@ -3,7 +3,7 @@ const { getExamen, getExamens, postExamen, deleteExamen, patchExamen } = require
 
 const examn = Router();
 
-examn.get('/', getExamen);
+examn.get('/:id_exam_user', getExamen);
 examn.get('/', getExamens);
 examn.post('/', postExamen);
 examn.delete('/', deleteExamen);

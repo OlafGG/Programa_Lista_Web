@@ -1,30 +1,61 @@
 //DEPENDENCIES
-const db = require('../config/database');
+const Materias = require('../models/materias');
 
 const getMateria = async(req, res) => {
-    let query = await db.query ("SELECT * FROM materias");
-    return res.status(200).json({code: 200, ok: query});
+    try{
+        const { materia_id } = req.params;
+
+        const query = await Materias.findOne({where: {materia_id}});
+
+        return res.status(200).json({code: 200, message: query});
+
+    }catch(err){
+        return res.status(500).json({
+            ok: false,
+            message: 'Internal server error',
+        });
+    }
+}
+
+const getMaterias = async (req, res) => {
+    try{
+        const query = await Materias.findAll();
+        return res.status(200).json({
+            ok: true,
+            message: query
+        });
+    }catch(err){
+        return res.status(500).json({
+            ok: false,
+            message: 'Internal server error',
+        });
+    }
 }
 
 const postMateria = async(req, res) => {
-    const { materia_id, materia_nombre, materia_caracteristica_1, materia_caracteristica_2, materia_caracteristicas_3, materia_caracteristicas_4, materia_caracteristicas_5, materia_caracteristicas_6} = req.body;
-    if (materia_id && materia_nombre){
-        let query =  `INSERT INTO materias(materia_id, materia_nombre,materia_caracteristica_1,`
-            query+= `materia_caracteristica_2, materia_caracteristicas_3, materia_caracteristicas_4,`
-            query+= `materia_caracteristicas_5, materia_caracteristicas_6) VALUES ('${materia_id}', '${materia_nombre}', '${materia_caracteristica_1}', '${materia_caracteristica_2}',`
-            query+= `'${materia_caracteristicas_3}', '${materia_caracteristicas_4}', '${materia_caracteristicas_5}', '${materia_caracteristicas_6}')`;
+    try{
+        const data = req.body;
+        if (data.materia_id && data.materia_nombre){
+            const materia = await Materias.create(data);
 
-            console.log("bandera");
-        const rows = await db.query(query);
-
-        if(rows.affectedRows == 1){
-            return res.status(200).json({code: 200, ok: "Materia agregada correctamente"});
+            return res.status(200).json({
+                code: 200,
+                ok: true,
+                message: "Materia agregada",
+                data: materia
+            });
+        }else{
+            return res.status(500).json({
+                code:500, 
+                ok: false, 
+                message: "Campos incompletos"});
         }
-
-        return res.status(400).json({code: 400, ok: "Ocurrio un error"});
+    }catch(err){
+        return res.status(500).json({
+            ok: false,
+            message: 'Internal server error',
+        });
     }
-
-    return res.status(400).json({code:400, ok:"Campos incompletos"});
 }
 
 const deleteMateria = async(req, res) => {
@@ -32,11 +63,12 @@ const deleteMateria = async(req, res) => {
 }
 
 const patchMateria = async(req, res) => {
-    console.log("patchM");
+    
 }
 
 module.exports = {
     getMateria,
+    getMaterias,
     postMateria,
     deleteMateria,
     patchMateria

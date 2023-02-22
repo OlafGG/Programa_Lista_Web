@@ -1,5 +1,4 @@
 const Alumnos = require('../models/alumnos');
-const { patch } = require('../routes/alumnos');
 
 const getAlumno = async (req, res) => {
     
@@ -103,6 +102,7 @@ const patchAlumno = async (req, res) => {
             });
         }else{
             return res.status(500).json({
+                code: 500,
                 ok: false,
                 message: "Ingrese datos correctamente"
             });
