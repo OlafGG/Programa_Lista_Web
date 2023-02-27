@@ -69,7 +69,7 @@ const deleteAlumno = async (req, res) => {
             return res.status(200).json({
                 code: 200,
                 ok: true,
-                message: "Usuario eliminado",
+                message: "Alumno eliminado",
                 usuario: query
             });
         }else {
