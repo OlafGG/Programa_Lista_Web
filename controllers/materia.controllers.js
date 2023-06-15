@@ -6,7 +6,6 @@ const getMateria = async(req, res) => {
         const { materia_id } = req.params;
 
         const query = await Materias.findOne({where: {materia_id}});
-
         return res.status(200).json({code: 200, message: query});
 
     }catch(err){
