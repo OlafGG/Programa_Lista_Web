@@ -34,7 +34,7 @@ const getMaterias = async (req, res) => {
 const postMateria = async(req, res) => {
     try{
         const data = req.body;
-        if (data.materia_id && data.materia_nombre){
+        if (data.materia_id && data.materia_name){
             const materia = await Materias.create(data);
 
             return res.status(200).json({
