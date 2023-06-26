@@ -62,9 +62,9 @@ const postAlumno = async (req, res) => {
 const deleteAlumno = async (req, res) => {
     
     try{
-        const { alumno_id } = req.body;
-        if(alumno_id){
-            const query = await Alumnos.destroy({where: { alumno_id }});
+        const { alum_id } = req.body;
+        if(alum_id){
+            const query = await Alumnos.destroy({where: { alum_id }});
             
             return res.status(200).json({
                 code: 200,
