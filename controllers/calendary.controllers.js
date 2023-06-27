@@ -1,17 +1,13 @@
-const { query } = require('express');
-const Calendary =  require('../models/calendary');
+const calendarios =  require('../models/calendary');
 
 const getCalendary = async (req, res) => {
     try {
-        const query = await Calendary.findAll();
-        return res.status(200).json({
-            ok: true,
-            message: query
-        });
+        const query = await calendarios.findAll();
+        return res.status(200).json({ok: true, message: query})
     } catch (err) {
         return res.status(500).json({
             ok: false,
-            message: 'Internal Server Error'
+            message: 'Internal Server Error No se po que'
         });
     }
 }
@@ -19,9 +15,9 @@ const getCalendary = async (req, res) => {
 const postCalendary = async (req, res) => {
     try {
         const data = req.body;
-        if (data.id_calendary){
+        if (data.title){
             console.log(data);
-            const calen = await Calendary.create(data);
+            const calen = await calendarios.create(data);
             return res.status(200).json({
                 code: 200,
                 ok: true,
@@ -38,7 +34,7 @@ const postCalendary = async (req, res) => {
     } catch (err) {
         return res.status(500).json({
             ok: false,
-            message: 'Internal Server Error'
+            message: 'Internal Server Error 500'
         })
     }
 }
@@ -47,7 +43,7 @@ const deleteCalendary = async (req, res) => {
     try {
         const { id_calendary } = req.body;
         if(id_calendary){
-            const query = await Calendary.destroy({where: { id_calendary }});
+            const query = await calendarios.destroy({where: { id_calendary }});
             return res.status(200).json({
                 code: 200,
                 ok: true,
@@ -73,7 +69,7 @@ const patchCalendary = async (req, res) => {
     try {
         const data = req.body;
         if(data.id_calendary && data.day){
-            const query = await Calendary.update({day: data.day, title: data.title, hour: data.hour});
+            const query = await calendarios.update({day: data.day, title: data.title, hour: data.hour});
 
             return res.status(200).json({
                 code: 200, 

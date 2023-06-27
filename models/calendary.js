@@ -1,6 +1,8 @@
 const Sequilize = require('sequelize');
 
-const calendary = db.define('calendary', {
+const {db} = require('../config/database')
+
+const calendarios = db.define('calendarios', {
     id_calendary: {
         type: Sequilize.INTEGER(6),
         primaryKey: true,
@@ -8,7 +10,10 @@ const calendary = db.define('calendary', {
     },
     day: {type: Sequilize.STRING(10), allowNull: false},
     hour: {type: Sequilize.STRING(6), allowNull: false},
-    title: {type: Sequilize.STRING(50), allowNull: false}
+    title: {type: Sequilize.STRING(50), allowNull: false},
+    id_profesor: {type: Sequilize.INTEGER(6), allowNull: false}
 }
 
 );
+
+module.exports = calendarios;

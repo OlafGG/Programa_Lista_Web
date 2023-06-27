@@ -20,7 +20,7 @@ class Server {
             proyectos: '/api/proyectos',
             tareas: '/api/tareas',
             ususarios: '/api/user',
-            calendary: '/api/calendary'
+            calendario: '/api/calendario'
         }
 
         //Conectar a la base de datos
@@ -61,7 +61,7 @@ class Server {
         //this.app.use(this.paths.proyectos, require('../routes/users'));
         //this.app.use(this.paths.tareas, require('../routes/users'));
         this.app.use(this.paths.ususarios, require('../routes/users'));
-        this.app.use(this.paths.calendary, require('../routes/calendary'))
+        this.app.use(this.paths.calendario, require('../routes/calendary'))
 
     }
 

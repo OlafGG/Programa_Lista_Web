@@ -7,3 +7,5 @@ calendary.get('/', getCalendary);
 calendary.post('/', postCalendary);
 calendary.delete('/', deleteCalendary);
 calendary.patch('/', patchCalendary);
+
+module.exports = calendary;
