@@ -1,4 +1,4 @@
-const Tareas = require('../models/alumnos');
+const Tareas = require('../models/tareas');
 
 const getTareas = async (req, res) => {
     try{

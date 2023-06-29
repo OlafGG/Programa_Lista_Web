@@ -59,9 +59,9 @@ class Server {
         //this.app.use(this.paths.examenes, require('../routes/users'));
         this.app.use(this.paths.materias, require('../routes/materias'));
         //this.app.use(this.paths.proyectos, require('../routes/users'));
-        //this.app.use(this.paths.tareas, require('../routes/users'));
+        this.app.use(this.paths.tareas, require('../routes/tareas'));
         this.app.use(this.paths.ususarios, require('../routes/users'));
-        this.app.use(this.paths.calendario, require('../routes/calendary'))
+        this.app.use(this.paths.calendario, require('../routes/calendary'));
 
     }
 
